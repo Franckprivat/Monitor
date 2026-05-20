@@ -1,0 +1,24 @@
+# Configuration du monitoring — vous pouvez modifier ces valeurs.
+defaults:
+  timeout_seconds: 5
+  expected_status: 200
+  interval_seconds: 30
+  alert_cooldown_seconds: 300
+
+endpoints:
+  # httpbin.org : service public pour tester (pas besoin de compte)
+  - name: httpbin-status
+    url: https://httpbin.org/status/200
+    timeout_seconds: 5
+    expected_status: 200
+
+  - name: httpbin-get
+    url: https://httpbin.org/get
+    timeout_seconds: 5
+    expected_status: 200
+
+alerts:
+  enabled: true
+  # Remplacé par la variable SLACK_WEBHOOK_URL du fichier .env si présente
+  slack_webhook_url: ${SLACK_WEBHOOK_URL}
+  alert_cooldown_seconds: 300
